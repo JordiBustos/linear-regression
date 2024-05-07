@@ -1,0 +1,53 @@
+\documentclass[12pt,a4paper]{book} 
+\input{Configs/Configs}
+
+\begin{document}
+\renewcommand{\contentsname}{\vspace{0cm} Contenido \vspace{-2cm}}
+
+\begin{titlepage}
+\vspace*{2cm}
+
+\noindent
+\vspace*{0.5cm}
+\titlefont{Machine Learning}
+
+\vspace{1.5cm}
+\epigraph{Regresión Lineal - Volumen 1}%
+{ \textsc{Bustos Jordi}}
+\null\vfill
+\vspace*{1cm}
+\noindent
+\hfill
+\begin{minipage}{0.7\linewidth}
+    \begin{flushright}
+        \printauthor %CHANGE THE AUTHORS IN FORMAT.TEX%
+    \end{flushright}
+\end{minipage}
+%
+\begin{minipage}{0.02\linewidth}
+    \rule{1pt}{70pt}
+\end{minipage}
+\titlepagedecoration
+\end{titlepage}
+
+\let\cleardoublepage=\clearpage
+\tableofcontents
+\blankpage
+
+\chapter{Notaciones y deficiones}
+\input{Chapters/1}
+\newpage\thispagestyle{empty}\blankpage
+
+\chapter{Examples II}
+\input{Chapters/2}
+\newpage\thispagestyle{empty}\blankpage
+
+
+\blankpage
+\bibliographystyle{unsrt}
+\bibliography{references}
+\nocite{*}
+
+
+
+\end{document}

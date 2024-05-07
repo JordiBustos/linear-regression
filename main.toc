@@ -1,0 +1,7 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Notaciones y deficiones}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Notaciones y definiciones}{4}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Examples 2}{6}{subsection.1.1.1}%
+\contentsline {chapter}{\numberline {2}Examples II}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Examplessss}{8}{section.2.1}%
+\contentsfinish 

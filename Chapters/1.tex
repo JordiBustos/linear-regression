@@ -1,22 +1,78 @@
-\section{Notaciones y definiciones}
+\section{¿Qué es Machine Learning?}
+
+Machine Learning es el arte de diseñar un algoritmo tal que
+pueda extraer de manera automática información de los datos. 
+No, no es hacer que las máquinas piensen, al menos no por ahora. Un modelo típico de Machine Learning consiste en una formula matemática
+tal que aplicada a una colección de inputs, nos devuelve el output esperado.
+Las tres partes fundamentales de todo algoritmo de Machine Learning son: el modelo, los datos y el entrenamiento.
+El modelo es la formula matemática (una función) que queremos hallar, los datos son la información del mundo real que usaremos para encontrar esa formula 
+y el entrenamiento es el proceso de ajustar los parámetros de la formula para que se ajuste a los datos.\\
+
+¿Por qué no consideramos esto como aprendizaje? En primer lugar no hay una instancia en la cual la máquina razone, por otro lado, 
+la máquina no puede generalizar, es decir, no puede aplicar lo aprendido a situaciones nuevas. Únicamente será útil si 
+los datos en los que se utilice el modelo ya entrenado son similares, en el sentido matemático, es decir, siguen una misma distribución
+de probabilidad. Caso contrario el output del modelo será inútil.\\ 
+
+Si bien es cierto que el Machine Learning hoy en día 
+puede ser implementado por cualquier persona con un poco de conocimiento en programación,
+al menos en un nivel muy básico, pues el software brinda las herramientas necesarias para diseñar
+y entrenar modelos sin necesidad de conocer su implementación interna,
+es importante tener en cuenta que es un campo de estudio muy complejo 
+que requiere del conocimiento de álgebra lineal, cálculo y estadística, si queremos producir modelos útiles en el mundo real.
+
+\section{Para quién es este libro}
+
+Este libro es para cualquier persona que quiera aprender Machine Learning, sin importar el nivel de conocimiento matemático que posea.
+Para los ejemplos y ejercicios se utilizará Python, por lo que es necesario contar con un conocimiento básico de programación en este lenguaje.
+En caso de no poseerlo, igualmente encontrará útil este libro, pues se explicará paso a paso la implementación de los algoritmos con rigurosidad matemática.
+
+\section{Definiciones y notación}
 
 Comencemos revisando la notación matemática que se utilizará en este libro, así como algunas definiciones y teoremas que nos serán de utilidad en el desarrollo de los temas.
+Al principio puede darle la impresión de que únicamente estamos definiendo conceptos o propiedades sin relación alguna, pero tengamos en cuenta 
+que los algoritmos de Machine Learning están construidos sobre las bases del álgebra lineal y el cálculo diferencial, por lo que es importante
+comprender los bloques necesarios que harán que el aprendizaje de estos algoritmos sea posible, junto con su futura implementación en Python.
+De más está decir que ningún algoritmo de machine learning implica un aprendizaje real de la máquina, veremos que, en general, no son más que un proceso de optimización de parametros.
 
-\subsection*{Conjuntos}
-Un conjunto es una colección finita o infinita de objetos. Los objetos de un conjunto se llaman elementos. 
-Por ejemplo, el conjunto de los números naturales es un conjunto cuyos elementos son los números $1, 2, 3, 4, \ldots$.
-Los conjuntos se denotan con letras mayúsculas y pueden estar definidos por extensión (todos sus elementos listados) o por comprensión (generados a partir de una condición). Y si está vacío se denota como $\O$. 
-Por ejemplo, $A$ es un conjunto.
-Si $x$ es un elemento de $A$, o sea, $x$ pertenece a $A$, se denota $x \in A$. 
-Por el contrario si $x$ no es un elemento de $A$, se denota $x \notin A$.
-Si el conjunto $A$ tiene $n$ elementos, se denota $|A| = n$ donde $n$ representa el cardinal de $A$.
+\subsection{Conjuntos}
+
+\begin{definition}
+    Los conjuntos son colecciones finitas o infinitas de objetos matemático, a cada objeto en cuestión lo llamaremos elemento. 
+    Al conjunto vacío lo denotaremos como $\O$.
+\end{definition}
+
+Los conjuntos los denotaremos con letras mayúsculas y pueden estar definidos por extensión (todos sus elementos listados) o por comprensión (listados a partir de una condición). 
+
+\begin{eg}
+    El conjunto de los números naturales es un conjunto cuyos elementos\\
+    son $1, 2, 3, 4, \ldots$.
+\end{eg}
+
+\begin{eg}
+    $A = \{x \, | \, x \, es \, par\}$. O sea, el conjunto de los números pares.
+\end{eg}
+
+Donde ``|'' se lee como ``tal que'' y ``es par`` es la condición que deben cumplir los elementos de $A$.
+Claramente, $A$ no puede ser listado por extensión, pues hay infinitos números pares.\\
+Si $a$ es un elemento de $A$, o sea, $a$ pertenece a $A$, se denota $a \in A$.
+Por el contrario si $a$ no es un elemento de $A$, se denota $a \notin A$.\\
+Cuando nuestro conjunto $A$ tiene $n$ elementos, denotaremos $|A| = n$ donde $|A|$ representa el cardinal de $A$.
 Si el conjunto representa todos los números en un rango de $a$ a $b$ se denota como $[a, b]$ y si no incluye a los extremos se denota como $(a, b)$.
 
-Podemos generar un nuevo conjunto que sea la intersección de dos conjuntos $A$ y $B$. Si tomamos todos los elementos que pertenecen a $A$ y a $B$ se denota como $A \cap B$.
+\begin{note}
+    \verb|[...]| entiendo en general por variedad o conjunto toda multiplicidad que puede ser pensada como unidad, esto es, toda colección de elementos determinados que pueden ser unidos en una totalidad mediante una ley. - Georg Cantor
+\end{note}
+
+Podemos generar un nuevo conjunto que sea la intersección de dos conjuntos $A$ y $B$. Tomando todos los elementos que pertenecen a $A$ y a $B$ simultáneamente se denota como $A \cap B$.
 A su vez podemos generar un nuevo conjunto que sea la unión de dos conjuntos $A$ y $B$. Si tomamos todos los elementos que pertenecen a $A$ o a $B$ se denota como $A \cup B$.
 Ejemplo de esto es si $A = \{1, 2, 3\}$ y $B = \{3, 4, 5\}$ entonces $A \cap B = \{3\}$ y $A \cup B = \{1, 2, 3, 4, 5\}$.
 
-\subsection*{Algebra lineal}
+\subsection{Algebra lineal}
+
+El álgebra lineal en resumidas cuentas es el campo de estudio de los vectores, las transformaciones lineales y el conjunto de reglas
+que nos permiten manipularlos.
+
+\subsubsection{Escalar, lista, vector}
 
 \begin{definition}
     Escalar 
@@ -48,7 +104,7 @@ Por ejemplo $(1, 2, 3)$ y $(1, 2, 3)$ son listas iguales, mientras que $(1, 2, 3
     $\K^n$
     
     Si consideramos $\K$ como $\R$ o $\C$ entonces $\K^n$ es el conjunto de todas las listas de longitud $n$ conformadas por elementos de $\K$.
-    $ \K^n = \{(x_1, x_2, \ldots, x_n) \,|\, x_i \in \mathbb{K}, \forall i = 1, 2, \ldots, n\}$.
+    $$ \K^n = \{(x_1, x_2, \ldots, x_n) \,|\, x_i \in \mathbb{K}, \forall i = 1, 2, \ldots, n\} $$.
 \end{definition}
 
 $\forall $ es un símbolo matemático que se lee como ``para todo'' y | es un símbolo matemático que se lee como ``tal que'', según la bibliografía puede usarse el símbolo : para representar lo mismo.
@@ -60,10 +116,13 @@ Por ejemplo, $\R^3$ es el conjunto de todas las listas de longitud 3 de números
 \begin{definition}
     Vector
     
-    Un vector es un elemento de un espacio vectorial. Como no vamos a definir espacios vectoriales en este libro, un vector simplemente es una lista de números reales o complejos. Un vector de longitud $n$ es un elemento de $\mathbb{K}^n$. Los denotaremos con letras minúsculas en negrita. Y usaremos la notación $\mathbf{x}_i$ para referirnos al $i$-ésimo elemento de un vector.
+    Un vector es cualquier objeto que respete la suma y la multiplicación por un escalar generando otro objeto de su misma clase. Un vector de longitud $n$ es un elemento de $\mathbb{K}^n$. Los denotaremos con letras minúsculas en negrita. Y usaremos la notación $\mathbf{x}_i$ para referirnos al $i$-ésimo elemento de un vector.
 \end{definition}
 
-Los vectores pueden ser visualizados como puntos o flechas en un espacio $n$-dimensional.
+Los vectores geométricos pueden ser visualizados como puntos o flechas en un espacio $n$-dimensional.\\
+Una notación que además sera conveniente para simplifcar la escritura es la sumatoria y la productoria. Supongamos que tenemos un conjunto de números $\mathbb{x} = \{x_1, x_2, \ldots, x_n\}$ y queremos sumarlos,
+entonces podemos escribirlo como $$\sum_{i=0}^{n} x_i = x_0 + x_1 + \ldots + x_n$$ que se lee como ``la suma de $x_i$ desde $i=0$ hasta $i=n$''.
+De igual forma si queremos multiplicarlos, podemos escribirlo como $$\prod_{i=0}^{n} x_i = x_0 x_1 \ldots x_n$$ que se lee como ``el producto de $x_i$ desde $i=0$ hasta $i=n$''.
 
 \begin{figure}[htbp]
     \centering
@@ -71,9 +130,19 @@ Los vectores pueden ser visualizados como puntos o flechas en un espacio $n$-dim
     \hspace{2cm} 
     \includegraphics[width=0.4\textwidth]{Images/1/vectors_3d.png}
     \caption{Visualización de vectores en $\R^2$ y $\R^3$ respectivamente.}
-    \label{fig:imagenes}
+    \label{fig:vectores_en_el_plano}
 \end{figure}
 
-\lipsum[1]
+La suma entre vectores está bien definida si los dos vectores tienen la misma cantidad de elementos y se realiza componente a componente de la siguiente forma:\\
+Si $\mathbf{u} = (u_1, u_2, \ldots, u_n)$ y $\mathbf{v} = (v_1, v_2, \ldots, v_n)$ entonces $\mathbf{u} + \mathbf{v} = (u_1 + v_1, u_2 + v_2, \ldots, u_n + v_n)$. 
+La resta se puede pensar como la suma de un vector con el opuesto del otro vector.\\
+La multiplicación por un escalar está dada por $\alpha \mathbf{u} = (\alpha u_1, \alpha u_2, \ldots, \alpha u_n)$. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/1/sum_of_two_vectors.png}
+    \caption{La suma de dos vectores resulta en la diagonal del paralelogramo que se forma con ellos.}
+    \label{fig:suma_de_vectores}
+\end{figure}
 
 \subsection{Examples 2}

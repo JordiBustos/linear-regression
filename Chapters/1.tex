@@ -23,8 +23,12 @@ que requiere del conocimiento de álgebra lineal, cálculo y estadística, si qu
 \section{Para quién es este libro}
 
 Este libro es para cualquier persona que quiera aprender Machine Learning, sin importar el nivel de conocimiento matemático que posea.
-Para los ejemplos y ejercicios se utilizará Python, por lo que es necesario contar con un conocimiento básico de programación en este lenguaje.
+Para los ejemplos y ejercicios se utilizará Python, por lo que contar con un conocimiento básico de programación en este lenguaje puede ser beneficioso.
 En caso de no poseerlo, igualmente encontrará útil este libro, pues se explicará paso a paso la implementación de los algoritmos con rigurosidad matemática.
+
+Aunque este libro no pretenda ser un manual de referencia, se espera que el lector pueda comprender los conceptos fundamentales del Machine Learning a través de una 
+explicación clara y concisa, con ejemplos y un tono divulgativo, sin perder la rigurosidad y formalidad matemática necesaria para comprender los algoritmos. Además 
+se proveerán implementaciones en Python de algunos de los algoritmos, para que el lector pueda experimentar con ellos y comprender su funcionamiento.
 
 \section{Definiciones y notación}
 
@@ -36,26 +40,52 @@ De más está decir que ningún algoritmo de machine learning implica un aprendi
 
 \subsection{Conjuntos}
 
+En nuestra vida cotidiana los conjuntos aparecen constantemente, aunque quizá no los reconozcamos como tal. Imaginemos por ejemplo los siguientes conjuntos:
+
+\begin{itemize}
+    \item El conjunto de los colores del arcoiris.
+    \item El conjunto de sabores que podemos sentir.
+    \item El conjunto de personas que conocemos.
+    \item El conjunto de nuestros seguidores en redes sociales.
+    \item La lista de productos que compramos hoy en el supermercado.
+    \item El stock de una tienda.
+\end{itemize}
+
+Los conjuntos son unos de los pilares fundamentales de la matemática y, aunque en principio parezcan algo trivial, veremos que se irán complejizando a medida que avancemos en la teoría.
+Definamos de manera formal qué es un conjunto.
+
 \begin{definition}
-    Los conjuntos son colecciones finitas o infinitas de objetos matemático, a cada objeto en cuestión lo llamaremos elemento. 
+    Los conjuntos son colecciones finitas o infinitas bien definida de objetos, a cada objeto en cuestión lo llamaremos elemento. 
     Al conjunto vacío lo denotaremos como $\O$.
 \end{definition}
 
 Los conjuntos los denotaremos con letras mayúsculas y pueden estar definidos por extensión (todos sus elementos listados) o por comprensión (listados a partir de una condición). 
 
 \begin{eg}
+    El conjunto de los colores del arcoiris es un conjunto cuyos elementos son $\{ rojo, naranja, amarillo, verde, azul, a\tilde{n}il, violeta \}$.\\
+    En este caso el conjunto está definido por extensión.
+\end{eg}
+
+\begin{eg}
+    $P = \{persona \, | \, persona \, es \, un \, ser \, humano \, que \, conozco\}$. O sea, el conjunto de los seres humanos que conozco.\\
+    En este caso el conjunto está definido por comprensión.
+\end{eg}
+
+Donde ``|'' se lee como ``tal que'' y ``es alguien que conozco`` es la condición 
+que deben cumplir los elementos de $P$.
+Si $p$ es un elemento de $P$, o sea, $a$ pertenece a $A$ o en nuestro idioma, conozco a la persona, denotamos $p \in P$.
+Por el contrario si $p$ no es un elemento de $P$, es decir, no conocemos a la persona, denotamos $p \notin P$.\\
+
+\begin{eg}
     El conjunto de los números naturales es un conjunto cuyos elementos\\
-    son $1, 2, 3, 4, \ldots$.
+    son $\{ 1, 2, 3, 4, \ldots \}$.
 \end{eg}
 
 \begin{eg}
     $A = \{x \, | \, x \, es \, par\}$. O sea, el conjunto de los números pares.
 \end{eg}
 
-Donde ``|'' se lee como ``tal que'' y ``es par`` es la condición que deben cumplir los elementos de $A$.
 Claramente, $A$ no puede ser listado por extensión, pues hay infinitos números pares.\\
-Si $a$ es un elemento de $A$, o sea, $a$ pertenece a $A$, se denota $a \in A$.
-Por el contrario si $a$ no es un elemento de $A$, se denota $a \notin A$.\\
 Cuando nuestro conjunto $A$ tiene $n$ elementos, denotaremos $|A| = n$ donde $|A|$ representa el cardinal de $A$.
 Si el conjunto representa todos los números en un rango de $a$ a $b$ se denota como $[a, b]$ y si no incluye a los extremos se denota como $(a, b)$.
 
